@@ -1,0 +1,321 @@
+﻿@using DemoWebApp.Models
+@{
+    var genres = Enum.GetValues(typeof(MovieGenre)).Cast<MovieGenre>();
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Film Fanatic</span></h4>
+        </div>
+        <div class="heading-elements">
+            <button class="btn bg-primary btn-labeled heading-btn" data-toggle="modal" data-target="#CreateModal"><b><i class="fa fa-film"></i></b> Create new</button>
+        </div>
+    </div>
+</div>
+
+<div class="page-container">
+    <div class="page-content">
+        <div class="content-wrapper">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Search films</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="main-search">
+                        <div class="input-group content-group">
+                            <div class="has-feedback has-feedback-left">
+                                <input id="mSearchQuery" class="form-control input-xlg" type="text" placeholder="Search by title or description...">
+                                <div class="form-control-feedback">
+                                    <i class="icon-search4 text-muted text-size-base"></i>
+                                </div>
+                            </div>
+                            <div class="input-group-btn">
+                                <button id="mSearch" class="btn bg-slate btn-xlg" type="button">Search</button>
+                                <button class="btn bg-slate btn-xlg dropdown-toggle btn-icon" type="button" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul id="mSearchGenres" class="dropdown-menu dropdown-menu-right">
+                                    <li data-ots-genre="All" class="chosen"><a>All</a></li>
+                                    <li class="divider"></li>
+                                    @{
+                                        foreach (var g in genres)
+                                        {
+                                            <li data-ots-genre="@g"><a>@g.ToString()</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mPanel">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="CreateModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="#">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create new Film</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Genre</label>
+                                <select id="mGenres" class="form-control" multiple>
+                                    @{
+                                        //var genres = Enum.GetValues(typeof(MovieGenre)).Cast<MovieGenre>();
+                                        foreach (var g in genres)
+                                        {
+                                            <option value="@g">@g.ToString()</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Title</label>
+                                <input id="mTitle" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Short description</label>
+                                <textarea id="mDescription" class="form-control" rows="5" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>IMDB Link</label>
+                                <input id="mImdbLink" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Image url</label>
+                                <input id="mImageLink" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-link" type="button" data-dismiss="modal">Cancel</button>
+                    <button id="mCreate" class="btn bg-success-800" type="button">OK</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="EditModal">
+    <div class="modal-dialog">
+        <div class="modal-content" id="mEditPnl">
+        </div>
+    </div>
+</div>
+
+<style>
+    .chosen {
+        background: red;
+        color: white;
+    }
+</style>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadMovies();
+        });
+
+        $('#mSearchGenres').on('click', 'li', function () {
+            $('#mSearchGenres > li').removeClass('chosen');
+            $(this).addClass('chosen');
+        });
+
+        $('#mSearch').on('click', function () {
+            loadMovies();
+        });
+        $('#mSearchQuery').on('keyup', function (e) {
+            if (e.which == 13) {
+                loadMovies();
+                return false;
+            }
+        });
+
+        $('#mCreate').on('click', function () {
+            var formData = {
+                Title: $('#mTitle').val(),
+                Description: $('#mDescription').val(),
+                ImdbLink: $('#mImdbLink').val(),
+                PosterLink: $('#mImageLink').val(),
+                Genres: $('#mGenres').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/movies/create',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                dataType: 'json',
+                complete: function (e, xhr, settings) {
+                    if (e.status === 200 || e.status === 201) {
+                        $('#CreateModal').modal('hide');
+                        $('#mTitle, #mDescription, #mImdbLink, #mImageLink, #mGenres').val(null);
+                        alert('Successfully created a movie!');
+                        loadMovies();
+                    } else {
+                        alert('Error creating movie!');
+                    }
+                }
+            });
+        });
+
+        $('#mEditPnl').on('click', '#mUpdate', function () {
+            var formData = {
+                Title: $('#Title').val(),
+                Description: $('#Description').val(),
+                ImdbLink: $('#ImdbLink').val(),
+                PosterLink: $('#PosterLink').val(),
+                Genres: $('#Genres').val()
+            };
+
+            $.ajax({
+                type: 'PUT',
+                url: '/api/movies/edit?id=' + $('#ID').val(),
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                dataType: 'json',
+                complete: function (e, xhr, settings) {
+                    if (e.status === 200) {
+                        $('#EditModal').modal('hide');
+                        $('#mEditPnl').html('');
+                        alert('Successfully updated a movie!');
+                        loadMovies();
+                    } else {
+                        alert('Error editing movie!');
+                    }
+                }
+            });
+        });
+
+        $('#mPanel').on('click', '.btn-movie-edit', function () {
+            $('#mEditPnl').html('');
+            $('#EditModal').modal('show');
+
+            $.ajax({
+                type: 'GET',
+                url: '/FilmFanatic/Movie/Edit?id=' + $(this).attr('data-movie-id'),
+                dataType: 'html',
+                beforeSend: function () {
+                    $('#mEditPnl').html('<div class="col-lg-12"><div class="well well-lg">Loading...</div></div>');
+                },
+                success: function (html) {
+                    $('#mEditPnl').html(html);
+                }
+            });
+
+            $('#EditModal').one('hide.bs.modal', function () {
+                $('#mEditPnl').html('');
+            });
+        });
+
+        $('#mPanel').on('click', '.btn-movie-delete', function () {
+            $('#mEditPnl').html('');
+            $('#EditModal').modal('show');
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/movies/delete?id=' + $(this).attr('data-movie-id'),
+                contentType: 'application/json',
+                dataType: 'json',
+                complete: function (e, xhr, settings) {
+                    if (e.status === 200) {
+                        alert('Successfully deleted a movie!');
+                        loadMovies();
+                    } else {
+                        alert('Error editing movie!');
+                    }
+                }
+            });
+        });
+
+        function loadMovies() {
+            var chosen = $('#mSearchGenres').find('.chosen');
+            var genre = chosen.length == 1 ? chosen.first().attr('data-ots-genre') : 'All';
+            var baseUrl = genre == 'All'
+                ? '/api/movies/find/'
+                : '/api/movies/' + genre + '/filter/';
+
+            $.ajax({
+                type: 'GET',
+                url: baseUrl + '?query=' + encodeURI($('#mSearchQuery').val()),
+                dataType: 'json',
+                cache: false,
+                scriptCharset: 'utf-8',
+                contentType: 'application/json; charset=utf-8',
+                beforeSend: function () {
+                    $('#mPanel').html('<div class="row"><div class="col-lg-12"><div class="well well-lg">Loading...</div></div></div>');
+                },
+                success: function (data) {
+                    var html = '';
+                    $.each(data, function (i, m) {
+                        if (i % 4 == 0)
+                            html += '<div class="row">';
+                        html += '<div class="col-lg-3 col-sm-6">\
+                                        <div class="thumbnail">\
+                                            <div class="thumb">\
+                                                <img src="' + m.PosterLink + '" alt="">\
+                                                <div class="caption-overflow">\
+                                                    <span>\
+                                                        <a data-movie-id="' + m.ID + '" class="btn border-white btn-movie-edit text-white btn-flat btn-icon btn-rounded"><i class="fa fa-2x fa-edit p-10"></i></a>\
+                                                        <a data-movie-id="' + m.ID + '" class="btn border-white btn-movie-delete text-white btn-flat btn-icon btn-rounded ml-5"><i class="fa fa-2x fa-trash p-10"></i></a>\
+                                                    </span>\
+                                                </div>\
+                                            </div>\
+                                            <div class="caption">\
+                                                <h6 class="no-margin-top text-semibold"><a href="' + m.ImdbLink + '" target="_blank" class="text-default">' + m.Title + '</a></h6>\
+                                                ' + m.Description + '\
+                                            </div>\
+                                        </div>\
+                                    </div>';
+                        if (i % 4 == 3 && i > 0)
+                            html += '</div>';
+                    });
+                    if (data.length == 0)
+                        html = '<div class="row">\
+                                    <div class="col-lg-12 col-sm-12">\
+                                        <div class="panel panel-body stack-media-on-mobile">\
+                                            <div class="media-left">\
+						                        <a class="btn btn-link btn-icon text-danger">\
+							                        <i class="fa fa-frown-o fa-2x no-edge-top"></i>\
+						                        </a>\
+					                        </div>\
+					                        <div class="media-body media-middle">\
+						                        <h6 class="media-heading text-semibold">No results found.</h6>\
+						                        Try different search query or create a new Film entry.\
+					                        </div>\
+				                        </div>\
+                                    </div>\
+                                </div>';
+                    $('#mPanel').html(html);
+                }
+            });
+        };
+    </script>
+}

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FilmFanatic | OTS 2016</title>
+    <meta name="description" content="FilmFanatic | OTS 2016 Modern Web Technologies | Created by ADORA-MED">
+    <meta name="author" content="ADORA-MED">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/css/filmfanatic-bootstrap.css" />
+        <link rel="stylesheet" href="~/css/filmfanatic-core.css" />
+        <link rel="stylesheet" href="~/css/filmfanatic-components.css" />
+        <link rel="stylesheet" href="~/css/filmfanatic-colors.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<body class="navbar-bottom">
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header" style="padding:7px 15px">
+            <a class="h5 text-white" href="@Url.Action("Index", "Home", new { area = "" })">
+                <i class="fa fa-home text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">OTS 2016</span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-user">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span>Anonymous</span>
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="navbar navbar-default navbar-fixed-bottom footer">
+        <ul class="nav navbar-nav visible-xs-block">
+            <li><a class="text-center collapsed" data-toggle="collapse" data-target="#footer"><i class="icon-circle-up2"></i></a></li>
+        </ul>
+        <div class="navbar-collapse collapse" id="footer">
+            <div class="navbar-text pull-right">
+                Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="http://www.adora-med.com" target="_blank">Adora-med</a>
+            </div>
+        </div>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

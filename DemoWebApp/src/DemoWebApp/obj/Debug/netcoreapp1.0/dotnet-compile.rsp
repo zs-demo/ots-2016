@@ -223,6 +223,10 @@
 --resource:"C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\obj\Debug\netcoreapp1.0\DemoWebAppdotnet-compile.deps.json",DemoWebApp.deps.json
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Program.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Startup.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\FilmFanatic\Controllers\HomeController.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\FilmFanatic\Controllers\MoviesController.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\FilmFanatic\ViewModels\CreateViewModel.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\FilmFanatic\ViewModels\EditViewModel.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\Workshop\Controllers\HomeController.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\AccountController.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\BasicsController.cs
@@ -231,8 +235,13 @@ C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\M
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\ApplicationDbContext.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\Migrations\00000000000000_CreateIdentitySchema.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\Migrations\20160613222652_one.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\Migrations\20160613222652_one.Designer.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\ApplicationUser.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\Movie.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\MovieGenre.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\MovieWithGenre.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\AccountViewModels\ForgotPasswordViewModel.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Models\AccountViewModels\LoginViewModel.cs
