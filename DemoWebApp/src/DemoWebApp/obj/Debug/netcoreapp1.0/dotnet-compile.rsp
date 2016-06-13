@@ -223,6 +223,7 @@
 --resource:"C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\obj\Debug\netcoreapp1.0\DemoWebAppdotnet-compile.deps.json",DemoWebApp.deps.json
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Program.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Startup.cs
+C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Areas\Workshop\Controllers\HomeController.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\AccountController.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\BasicsController.cs
 C:\Users\zedin\Documents\GitHub\ots-2016\DemoWebApp\src\DemoWebApp\Controllers\HomeController.cs

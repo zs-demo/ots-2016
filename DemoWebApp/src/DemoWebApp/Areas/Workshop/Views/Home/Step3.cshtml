@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Workshop - Step 3";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Step3">
+                Controllers <em class="text-muted text-thin text-size-small">Workshop - Step 3</em>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="row font-s13">
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">HomeController (MVC)</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>[Area("FilmFanatic")]
+public class HomeController : Controller
+{
+    private readonly ApplicationDbContext dbContext;
+    private readonly UserManager<ApplicationUser> userManager;
+    private ILogger logger;
+
+    public HomeController(ILoggerFactory logFactory, ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+    {
+        this.dbContext = dbContext;
+        this.userManager = userManager;
+        this.logger = logFactory.CreateLogger<HomeController>();
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">MovieController (API)</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>[Area("FilmFanatic")]
+public class MovieController : Controller</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>private readonly ApplicationDbContext dbContext;
+private readonly UserManager<ApplicationUser> userManager;
+private ILogger logger;</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>public MovieController(ILoggerFactory logFactory, ApplicationDbContext dbContext, UserManager<ApplicationUser> userManager)
+{
+    this.dbContext = dbContext;
+    this.userManager = userManager;
+    this.logger = logFactory.CreateLogger<MovieController>();
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Workshop - Step 1";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Step1">
+                Creating an area <em class="text-muted text-thin text-size-small">Workshop - Step 1</em>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="row font-s13">
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Movie</h3>
+                </div>
+                <div class="block-content">
+                    <div class="js-tree-icons-alt treeview">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Routing</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>[Area("FilmFanatic")]
+public class HomeController : Controller { ... }</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        name: "areasRouting",
+        template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+    routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+});</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="block-title">_ViewImports</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-info">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>&#64;addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        var e = [{
+            text: 'Areas',
+            nodes: [{
+                text: 'FilmFanatic',
+                nodes: [{
+                    text: "Controllers",
+                    nodes: [{
+                        text: "HomeController"
+                    }]
+                }, {
+                    text: "Models",
+                }, {
+                    text: "Views",
+                    nodes: [{
+                        text: "Shared"
+                    },
+                    {
+                        text: "Home"
+                    }]
+                }]
+            }]
+        }];
+
+        $(".js-tree-icons-alt").treeview({
+            data: e,
+            color: "#555",
+            expandIcon: "fa fa-angle-down",
+            collapseIcon: "fa fa-angle-up",
+            nodeIcon: "fa fa-file-o text-city",
+            onhoverColor: "#f9f9f9",
+            selectedColor: "#555",
+            selectedBackColor: "#f1f1f1",
+            showBorder: !1,
+            levels: 5
+        })
+    </script>
+}

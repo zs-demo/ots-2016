@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Logging";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Logging">
+                Logging
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Getting started</h3>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core has built-in support for logging.</p>
+            <p>Implementing logging in your application requires a minimal amount of setup code.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Setup</h3>
+        </div>
+        <div class="block-content">
+            <p>Adding logging to a component in your application is done by requesting either an ILoggerFactory or an ILogger<T> via Dependency Injection.</p>
+            <p>If an ILoggerFactory is requested, a logger must be created using its CreateLogger method.</p>
+            <p>When a logger is created, a category name must be provided.</p>
+            <p>The call to the log method can utilize a format string with named placeholders (like {path}).</p>
+            <p><pre>logger.LogInformation("No endpoint found for request {path}", context.Request.Path);</pre></p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ILogger&lt;T&gt;</h3>
+        </div>
+        <div class="block-content">
+            <p>your application can request an instance of ILogger<T> as a dependency in a class’s constructor, where T is the type performing logging.</p>
+            <p>When this technique is used, the logger will automatically use the type’s name as its category name.</p>
+            <p>By requesting an instance of ILogger<T>, your class doesn’t need to create an instance of a logger via ILoggerFactory.</p>
+            <p>You can use this approach anywhere you don’t need the additional functionality offered by ILoggerFactory.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Log Levels</h3>
+        </div>
+        <div class="block-content">
+            <p>When adding logging statements to your application, you must specify a LogLevel.</p>
+            <p>The LogLevel allows you to control the verbosity of the logging output from your application, as well as the ability to pipe different kinds of log messages to different loggers.</p>
+            <p>ASP.NET Core defines six levels of logging verbosity, ordered by increasing importance or severity:</p>
+            <ul>
+                <li><strong>Trace</strong> - Used for the most detailed log messages</li>
+                <li><strong>Debug</strong> - Messages contain information that may be useful for debugging, but have no long-term value</li>
+                <li><strong>Information</strong> - These messages are used to track the general flow of the application</li>
+                <li><strong>Warning</strong> - The Warning level should be used for abnormal or unexpected events in the application flow</li>
+                <li><strong>Error</strong> - An error should be logged when the current flow of the application must stop due to some failure</li>
+                <li><strong>Critical</strong> - A critical log level should be reserved for unrecoverable application or system crashes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Note</h3>
+        </div>
+        <div class="block-content">
+            <p>It is recommended that you perform application logging at the level of your application and its APIs, not at the level of the framework. The framework already has logging built in which can be enabled simply by setting the appropriate logging verbosity level.</p>
+        </div>
+    </div>
+</div>

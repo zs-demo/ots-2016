@@ -52,5 +52,10 @@ namespace DemoWebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Logging()
+        {
+            return View();
+        }
     }
 }

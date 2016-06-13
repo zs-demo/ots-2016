@@ -1,0 +1,143 @@
+﻿@{
+    ViewData["Title"] = "Workshop - Step 2";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Step2">
+                Preparing database <em class="text-muted text-thin text-size-small">Workshop - Step 2</em>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="row font-s13">
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Models</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>public enum MovieGenre
+{
+    Other,
+    Action,
+    Comedy,
+    Crime,
+    Documentary,
+    Drama,
+    Family,
+    Horror,
+    Love,
+    Mystery,
+    Thriller
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>public class Movie
+{
+    [Key]
+    public long ID { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public string ImdbLink { get; set; }
+    public string PosterLink { get; set; }
+    public virtual ICollection<MovieWithGenre> Genres { get; set; }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>public class MovieWithGenre
+{
+    public long ID { get; set; }
+    public MovieGenre Genre { get; set; }
+    public virtual Movie Movie { get; set; }
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Application Db Context</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>protected override void OnModelCreating(ModelBuilder builder)
+{
+    base.OnModelCreating(builder);
+
+    builder.Entity<Movie>()
+        .HasMany(i => i.Genres)
+        .WithOne(i => i.Movie)
+        .OnDelete(DeleteBehavior.Cascade);
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>public DbSet<Movie> TblMovies { get; set; }
+public DbSet<MovieWithGenre> TblMoviesWithGenres { get; set; }</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="block-title">SQL Server Management Studio</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-success">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>SQL Server and Windows Authentication mode</pre>
+                                <pre>Security > Logins > NEW</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="block">
+                <div class="block-header">
+                    <h3 class="block-title">Package Manager Console</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-info">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>PM> Add-Migration filmfanatic -Verbose</pre>
+                                <pre>PM> Update-Database -Verbose</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

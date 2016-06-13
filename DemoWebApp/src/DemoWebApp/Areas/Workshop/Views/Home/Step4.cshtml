@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Workshop - Step 4";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Step4">
+                Getting JSON Data <em class="text-muted text-thin text-size-small">Workshop - Step 4</em>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="row font-s13">
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Controller methods</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-info">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>[HttpGet]
+[Route("api/movies/find/")]
+public IActionResult FindMovies(string query)
+{
+    try
+    {
+        var data = dbContext...;
+
+        if (string.IsNullOrEmpty(query) == false)
+            data = data.Where(...);
+        
+        var result = from i in data
+                     select new
+                     {
+                        ID = i.ID,
+                        Title = i.Title,
+                        Description = i.Description,
+                        ImdbLink = i.ImdbLink,
+                        PosterLink = i.PosterLink,
+                        Genres = ...
+                    };
+
+        return Ok(result);
+    }
+    catch (Exception exc)
+    {
+        logger.LogError("Error searching movies...", exc);
+    }
+    return BadRequest();
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>[HttpGet]
+[Route("api/movies/{genre}/filter/")]
+public IActionResult FilterMoviesByGenre(string genre, string query = null)</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Routing</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-danger">
+                        <div class="highlight-none">
+                            <div class="highlight">
+                                <pre>$.ajax({
+    type: 'GET',
+    url: baseUrl + '?query=' + encodeURI(queryString),
+    dataType: 'json',
+    cache: false,
+    scriptCharset: 'utf-8',
+    contentType: 'application/json; charset=utf-8',
+    beforeSend: function () {
+        //loading message
+    },
+    success: function (data) {
+        var html = '';
+        $.each(data, function (i, m) {
+            html += ...;
+            //or different DOM append 
+        });
+        if (data.length == 0)
+            html = 'emtpy result set HTML';
+
+        //show html
+    }
+});</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

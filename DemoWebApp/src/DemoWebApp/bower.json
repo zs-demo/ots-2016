@@ -7,6 +7,7 @@
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "font-awesome": "4.6.3",
-    "simple-line-icons": "2.3.2"
+    "simple-line-icons": "2.3.2",
+    "bootstrap-treeview": "1.2.0"
   }
 }
