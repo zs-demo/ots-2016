@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Controllers";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Controllers">
+                Controllers
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Old vs. new</h3>
+        </div>
+        <div class="block-content">
+            <p>Before ASP.NET Core, our world was split between ASP.NET MVC and ASP.NET Web API.</p>
+            <p>In ASP.NET Core that changes to a single model in ASP.NET MVC 6 for handling requests, whether they end up returning data or views.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">POCO</h3>
+        </div>
+        <div class="block-content">
+            <p>By default, as long as your class is public, non-abstract, has a Controller suffix and is defined in an assembly that references any of the MVC assemblies (Microsoft.AspNet.Mvc.Core, Microsoft.AspNet.Mvc etc), it will be discovered as a valid controller.</p>
+            <p>POCO controllers support convention-based property injection through DefaultControllerFactory.</p>
+            <ul>
+                <lI><strong>ActionContext</strong></lI>
+                <li><strong>ViewData</strong> - injects an instance of ViewDataDictionary</li>
+                <li><strong>Url</strong> - injects an instance of IUrlHelper</li>
+            </ul>
+            <p>In addition to that, the helpers can also be constructor injected, since ASP.NET vNext has dependency injection all the way through.</p>
+        </div>
+    </div>
+</div>

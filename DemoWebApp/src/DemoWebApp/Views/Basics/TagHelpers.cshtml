@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Tag Helpers";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="TagHelpers">
+                Tag Helpers
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Remember ASP.NET Web Forms?</h3>
+        </div>
+        <div class="block-content">
+            <p>Tag Helper is a new feature in ASP.NET MVC 6 that enables the server-side code to create and render HTML elements, in MVC Razor View files.</p>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Tag Helpers vs MVC Html Helper Methods</h3>
+        </div>
+        <div class="block-content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a class="block block-link-hover1" href="javascript:void(0)">
+                        <div class="block-content block-content-full bg-primary clearfix">
+                            <i class="si si-envelope fa-2x text-warning pull-right"></i>
+                            <span class="h4 text-white">Tag Helpers</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="block block-link-hover1" href="javascript:void(0)">
+                        <div class="block-content block-content-full bg-modern clearfix">
+                            <i class="si si-user-follow fa-2x text-primary pull-right"></i>
+                            <span class="h4 text-white">Html Helper Methods</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a class="block block-link-hover3" href="javascript:void(0)">
+                        <div class="block-content block-content-full clearfix">
+                            <div class="highlight-none">
+                                <div class="highlight">
+                                    <pre>&lt;label class='col-md-2 control-label' asp-for='CategoryId'&gt;&lt;/label&gt;</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a class="block block-link-hover2" href="javascript:void(0)">
+                        <div class="block-content block-content-full clearfix">
+                            <div class="highlight-none">
+                                <div class="highlight">
+                                    <pre>&#64;Html.LabelFor(model => model.CategoryId, htmlAttributes: new { &#64;class = "control-label col-md-2" })</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Benefits</h3>
+        </div>
+        <div class="block-content">
+            <p>They are integrated in the HTML elements.</p>
+            <p>Visual Studio 2015 provides intellisense for Tag helpers while using them in a View.</p>
+            <p>They can be independent from the C# syntax.</p>
+            <p>You can make your own tag helpers.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "EF7 Migrations";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Migrations">
+                EF7 Migrations
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="row font-s13">
+        <div class="col-lg-4">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">ApplicationDbContext</h3>
+                </div>
+                <div class="block-content">
+                    <div class="alert alert-success">
+                        <p>Models</p>
+                    </div>
+                    <div class="alert alert-success">
+                        <p>DbSets &amp; Fluent API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">appsettings.json</h3>
+                </div>
+                <div class="block-content">
+                    <div class="highlight-none">
+                        <div class="highlight">
+                            <pre>"Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=Adora.OTS.ModernWeb;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="block block-bordered">
+                <div class="block-header">
+                    <h3 class="block-title">Command Line</h3>
+                </div>
+                <div class="block-content">
+                    <div class="highlight-none">
+                        <div class="highlight">
+                            <pre>dnx ef migrations add PrvaMigracija</pre>
+                        </div>
+                    </div>
+                    <div class="highlight-none">
+                        <div class="highlight">
+                            <pre>dnx ef database update</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "What's new in ASP.NET Core?";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="AspNetCore">
+                What's new in ASP.NET Core?
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core is open-source</h3>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core is a new open-source and cross-platform framework for building modern cloud based internet connected applications.</p>
+            <p>
+                <code>Console Application</code>
+            </p>
+            <p>
+                <a href="https://github.com/aspnet/home" target="_blank" class="btn btn-info">GitHub Repository</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core is modular</h3>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core is no longer based on System.Web.dll. It is based on a set of granular and well factored NuGet packages.</p>
+            <p>
+                <a href="https://www.nuget.org/" target="_blank" class="btn btn-success">NuGet Gallery</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core configuration changes</h3>
+        </div>
+        <div class="block-content">
+            <p>Instantiate Configuration in the Startup class.</p>
+            <p>Then, use the Options pattern to access individual settings.</p>
+        </div>
+        <div class="block-content">
+            <p>The last configuration source specified “wins” if a setting exists in more than one location.</p>
+            <p>You are not limited to using a single configuration source</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core WebHostBuilder</h3>
+        </div>
+        <div class="block-content">
+            <p>The builder has methods that define the web server and the startup class.</p>
+<pre>var host = new WebHostBuilder()
+    .UseKestrel()
+    .UseStartup&lt;Startup&gt;()
+    .Build();
+
+host.Run();
+</pre>
+<pre>UseIISIntegration()</pre>
+        </div>
+        <div class="block-content">
+            <p>The Build and Run methods build the IWebHost that will host the app and start it listening for incoming HTTP requests.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core Services</h3>
+        </div>
+        <div class="block-content">
+            <p>Services are component that are intended for common consumption in an application.</p>
+            <p>Services are made available through dependency injection.</p>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core includes a simple built-in inversion of control (IoC) container that supports constructor injection by default.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core Middleware</h3>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core middleware performs asynchronous logic on an HttpContext and then either invokes the next middleware in the sequence or terminates the request directly.</p>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core comes with a rich set of prebuilt middleware:</p>
+            <ul>
+                <li>Static files</li>
+                <li>Routing</li>
+                <li>Diagnostics</li>
+                <li>Authentication</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Servers</h3>
+        </div>
+        <div class="block-content">
+            <p>The ASP.NET Core hosting model does not directly listen for requests.</p>
+            <p>It relies on an HTTP server implementation to forward the request to the application.</p>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core includes a managed cross-platform web server, called Kestrel, that you would typically run behind a production web server like IIS or nginx.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core Web root</h3>
+        </div>
+        <div class="block-content">
+            <p>The web root of your app is the root location in your project from which HTTP requests are handled (for example handling of static file requests).</p>
+        </div>
+        <div class="block-content">
+            <p>The default web root path is <span class="label label-info">&lt;content root&gt;&frasl;wwwroot</span></p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core Configurationt</h3>
+        </div>
+        <div class="block-content">
+            <p>The new configuration model is NOT based on <span class="label label-info">System.Configuration</span> or <span class="label label-info">web.config</span>.</p>
+            <p>It pulls from an ordered set of configuration providers.</p>
+        </div>
+        <div class="block-content">
+            <p>The built-in configuration providers support a variety of file formats (XML, JSON, INI) and environment variables to enable environment-based configuration.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">ASP.NET Core Environments</h3>
+        </div>
+        <div class="block-content">
+            <p>Environments, like “Development” and “Production”, are a first-class notion in ASP.NET Core and can be set using environment variables.</p>
+            <p>Environment variables are used to indicate which environment the application is running in, allowing the app to be configured appropriately.</p>
+        </div>
+        <div class="block-content">
+            <p>ASP.NET Core references a particular environment variable, <span class="label label-info">Hosting:Environment</span> (or <span class="label label-info">Hosting__Environment</span> on *nix systems), to describe the environment the application is currently running in. This variable can be set to any value you like, but three values are used by convention: Development, Staging, and Production.</p>
+        </div>
+    </div>
+</div>

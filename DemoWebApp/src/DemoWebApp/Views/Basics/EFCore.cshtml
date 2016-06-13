@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "What is Entity Framework Core?";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="EFCore">
+                What is Entity Framework Core?
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">EF 6.x - EF 7 - EF Core</h3>
+        </div>
+        <div class="block-content">
+            <p>Between RC1 and RC2, Entity Framework 7 has been changed to Entity Framework Core 1.0.</p>
+            <p>This naming helps convey that EF Core is a new code base that does not inherit all the features and API surface of EF6.x.</p>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">New Project in Visual Studio</h3>
+        </div>
+        <div class="block-content">
+            <p>If you use Individual User Accounts instead of None for Authentication then an Entity Framework model will be added to your project in Models\IdentityModel.cs.</p>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Register your context with dependency injection</h3>
+        </div>
+        <div class="block-content">
+            <p>The concept of dependency injection is central to ASP.NET Core. Services (such as ApplicationDbContext) are registered with dependency injection during application startup.</p>
+        </div>
+    </div>
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Migrations</h3>
+        </div>
+        <div class="block-content">
+            <p>Package Manager Console commands are installed with the Microsoft.EntityFrameworkCore.Tools package.</p>
+            <p>All commands support the common parameters: -Verbose, -Debug, -ErrorAction, -ErrorVariable, -WarningAction, -WarningVariable, -OutBuffer, -PipelineVariable, and -OutVariable.</p>
+            <p>Here are the basic commands you’ll need to write migrations for ASP.NET Core. If you’re coming from DNX, not much has changed.</p>
+            <ul>
+                <li>Add a new migration (If it’s the first one, it will add the neccessary folder structure and classes)</li>
+                <li><pre>dotnet ef migrations add {MigrationName}</pre></li>
+                <li>Remove the most recent migration.</li>
+                <li><pre>dotnet ef migrations remove</pre></li>
+                <li>Update the database the latest version (apply all migrations)</li>
+                <li><pre>dotnet ef database update </pre></li>
+            </ul>
+            <p>Full set of commands can be found <a href="https://docs.efproject.net/en/latest/cli/powershell.html" target="_blank">here</a></p>
+        </div>
+    </div>
+</div>

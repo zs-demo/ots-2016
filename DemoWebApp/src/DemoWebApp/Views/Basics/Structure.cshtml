@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "ASP.NET Core project structure";
+}
+
+<div class="content bg-gray-lighter">
+    <div class="row items-push">
+        <div class="col-sm-8">
+            <h1 class="page-heading" data-tmp="Structure">
+                ASP.NET Core project structure
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="content content-boxed">
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Model - View - Controller</h3>
+        </div>
+        <div class="block-content">
+            <ul>
+                <li>(View)Models</li>
+                <li>Views</li>
+                <li>Controllers</li>
+            </ul>
+            <p>You can use familliar naming nonvention.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Project.json</h3>
+        </div>
+        <div class="block-content">
+            <p>The “project.json” file serves as the new project file (.csproj/.vbproj). This is where we put all the dependencies that our application requires.</p>
+
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Startup.cs</h3>
+        </div>
+        <div class="block-content">
+            <p>In ASP.NET Core, the Startup class provides the entry point for an application, and is required for all applications.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">NPM</h3>
+        </div>
+        <div class="block-content">
+            <p style="text-decoration:line-through">Some people say Node.js is something done in Javascript and that runs in the Server.</p>
+            <p>Node.js is much bigger and today we can use it for anything in development.</p>
+            <p>You will not use Node.js to develop, but it is going to help and auxiliary the development.</p>
+        </div>
+        <div class="block-content">
+            <p>NPM is your package manager.</p>
+            <p>Bower and Gulp are packages created to Node.js and that now also are used in ASP.NET.</p>
+        </div>
+        <div class="block-content">
+            <p>In cases where you need more packages, you can install by just changing this file so that when you start typing, the NPM seeks packages similarly.</p>
+            <p>When you choose the package, it is automatically installed.</p>
+            <p>Another way to install packages is through command, where you inform something as “NPM install <packages>”.</p>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header">
+            <h3 class="block-title">Bower</h3>
+        </div>
+        <div class="block-content">
+            <p>As in the NPM, Bower is a tool that manages packages too (Client packages, such as jQuery).</p>
+        </div>
+        <div class="block-content">
+            <p>Bower also has files of configuration called bower.json that manage the packages.</p>
+            <p>If you want to add, remove or change a package, just change that file that when typing, the packages with names similar to the name typed are brought.</p>
+        </div>
+        <div class="block-content">
+            <p>In the ASP.NET Core, we have a new folder called wwwroot.</p>
+            <p>In this folder are  the statics files and the generated files as CSS and JS.</p>
+            <p>When Bower installs the packages, the libraries are send to lib folder.</p>
+        </div>
+    </div>
+</div>

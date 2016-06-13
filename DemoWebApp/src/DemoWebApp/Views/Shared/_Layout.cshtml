@@ -2,11 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DemoWebApp</title>
+    <title>@ViewData["Title"] | OTS 2016 | Modern Web</title>
+    <meta name="description" content="OTS 2016 Modern Web Technologies created by ADORA-MED | DEMO">
+    <meta name="author" content="ADORA-MED">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/lib/simple-line-icons/css/simple-line-icons.css" />
+        <link rel="stylesheet" href="~/css/theme.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
@@ -17,32 +25,103 @@
     </environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">DemoWebApp</a>
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+        <aside id="side-overlay">
+            <div id="side-overlay-scroll">
+                <div class="side-header side-content">
+                    <button class="btn btn-default pull-right" type="button" data-toggle="layout" data-action="side_overlay_close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <span>
+                        <span class="font-w600 push-10-l">Anonymous</span>
+                    </span>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
+        </aside>
+        <nav id="sidebar">
+            <div class="sidebar-content">
+                <div class="side-header side-content bg-white-op">
+                    <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-link text-gray dropdown-toggle" data-toggle="dropdown" type="button">
+                            <i class="si si-drop"></i>
+                        </button>
+                    </div>
+                    <a class="h5 text-white" href="@Url.Action("Index", "Home", new { area = "" })">
+                        <i class="fa fa-home text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">OTS 2016</span>
+                    </a>
+                </div>
+                <div class="side-content">
+                    <ul class="nav-main">
+                        <li>
+                            <a data-tmp="Home" asp-action="Index" asp-controller="Home" asp-area=""><i class="icon icon-speedometer"></i><span class="sidebar-mini-hide" />Home</a>
+                        </li>
+                        <li class="nav-main-heading"><span class="sidebar-mini-hide">Basics</span></li>
+                        <li>
+                            <a data-tmp="AspNetCore" asp-action="AspNetCore" asp-controller="Basics" asp-area=""><i class="icon icon-energy"></i><span class="sidebar-mini-hide" />ASP.NET Core</a>
+                        </li>
+                        <li>
+                            <a data-tmp="Structure" asp-action="Structure" asp-controller="Basics" asp-area=""><i class="fa fa-code"></i><span class="sidebar-mini-hide" />Project Structure</a>
+                        </li>
+                        <li>
+                            <a data-tmp="Areas" asp-action="Areas" asp-controller="Basics" asp-area=""><i class="icon icon-compass"></i><span class="sidebar-mini-hide" />Areas &amp; Routing</a>
+                        </li>
+                        <li>
+                            <a data-tmp="Controllers" asp-action="Controllers" asp-controller="Basics" asp-area=""><i class="icon icon-anchor"></i><span class="sidebar-mini-hide" />Controllers</a>
+                        </li>
+                        <li>
+                            <a data-tmp="TagHelpers" asp-action="TagHelpers" asp-controller="Basics" asp-area=""><i class="icon icon-magic-wand"></i><span class="sidebar-mini-hide" />Tag Helpers</a>
+                        </li>
+                        <li>
+                            <a data-tmp="EF7" asp-action="EF7" asp-controller="Basics" asp-area=""><i class="icon icon-layers"></i><span class="sidebar-mini-hide" />Entity Framework 7</a>
+                        </li>
+                        <li>
+                            <a data-tmp="EFCore" asp-action="EFCore" asp-controller="Basics" asp-area=""><i class="icon icon-layers"></i><span class="sidebar-mini-hide" />Entity Framework Core</a>
+                        </li>
+                        <li class="nav-main-heading"><span class="sidebar-mini-hide">OFFICIAL HELP</span></li>
+                        <li>
+                            <a target="_blank" href="https://docs.asp.net/en/latest/"><i class="fa fa-windows"></i><span class="sidebar-mini-hide">ASP.NET Core</span></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://ef.readthedocs.io/en/latest/"><i class="fa fa-database"></i><span class="sidebar-mini-hide">Entity Framework</span></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://bower.io/"><i class="fa fa-cubes"></i><span class="sidebar-mini-hide">Bower</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016 - DemoWebApp</p>
+
+        </nav>
+        <header id="header-navbar" class="content-mini content-mini-full">
+            <ul class="nav-header pull-left">
+                <li class="hidden-md hidden-lg">
+                    <button class="btn btn-default" data-toggle="layout" data-action="sidebar_toggle" type="button">
+                        <i class="fa fa-navicon"></i>
+                    </button>
+                </li>
+                <li class="hidden-xs hidden-sm">
+                    <button class="btn btn-default" data-toggle="layout" data-action="sidebar_mini_toggle" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                </li>
+            </ul>
+        </header>
+        <main id="main-container">
+            <div class="content bg-image overflow-hidden" style="background-image: url('@Url.Content("~/images/photo3@2x.jpg")');">
+                <div class="push-50-t push-15">
+                    <h1 class="h2 text-white animated zoomIn">Modern Web Technologies</h1>
+                    <h2 class="h5 text-white-op animated zoomIn">OTS 2016</h2>
+                </div>
+            </div>
+            @RenderBody()
+        </main>
+        <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+            <div class="pull-right">
+                Crafted with <i class="fa fa-heart text-city"></i> by <a class="font-w600" href="http://www.adora-med.com" target="_blank">Adora-med</a>
+            </div>
         </footer>
     </div>
 
