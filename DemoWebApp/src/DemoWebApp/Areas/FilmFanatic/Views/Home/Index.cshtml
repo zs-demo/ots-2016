@@ -220,13 +220,16 @@
 
             $.ajax({
                 type: 'GET',
-                url: '/FilmFanatic/Movie/Edit?id=' + $(this).attr('data-movie-id'),
+                url: '/FilmFanatic/Movies/Edit?id=' + $(this).attr('data-movie-id'),
                 dataType: 'html',
                 beforeSend: function () {
                     $('#mEditPnl').html('<div class="col-lg-12"><div class="well well-lg">Loading...</div></div>');
                 },
                 success: function (html) {
                     $('#mEditPnl').html(html);
+                },
+                error: function (e, error, b) {
+                    alert(error);
                 }
             });
 

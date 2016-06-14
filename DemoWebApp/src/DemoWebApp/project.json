@@ -37,7 +37,9 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview1-final",
       "type": "build"
-    }
+    },
+    "Serilog.Extensions.Logging": "1.0.0-rc2-10110",
+    "Serilog.Sinks.RollingFile": "2.0.0-rc-703"
   },
 
   "tools": {

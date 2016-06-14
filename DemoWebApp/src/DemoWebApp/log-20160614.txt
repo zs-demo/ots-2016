@@ -1,0 +1,81 @@
+﻿2016-06-14 12:22:32.168 +02:00 [Information] User profile is available. Using '"C:\Users\zedin\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2016-06-14 12:22:33.002 +02:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:6129/  0
+2016-06-14 12:22:33.002 +02:00 [Information] Request starting HTTP/1.1 GET http://localhost:6129/  
+2016-06-14 12:22:34.334 +02:00 [Information] Executing action method "DemoWebApp.Controllers.HomeController.Index (DemoWebApp)" with arguments (null) - ModelState is Valid'
+2016-06-14 12:22:34.334 +02:00 [Information] Executing action method "DemoWebApp.Controllers.HomeController.Index (DemoWebApp)" with arguments (null) - ModelState is Valid'
+2016-06-14 12:22:38.151 +02:00 [Information] Executing ViewResult, running view at path "/Views/Home/Index.cshtml".
+2016-06-14 12:22:38.157 +02:00 [Information] Executing ViewResult, running view at path "/Views/Home/Index.cshtml".
+2016-06-14 12:22:39.124 +02:00 [Information] Executed action "DemoWebApp.Controllers.HomeController.Index (DemoWebApp)" in 4988.886ms
+2016-06-14 12:22:39.124 +02:00 [Information] Executed action "DemoWebApp.Controllers.HomeController.Index (DemoWebApp)" in 4988.8811ms
+2016-06-14 12:22:39.237 +02:00 [Information] Request finished in 6290.7273ms 200 text/html; charset=utf-8
+2016-06-14 12:22:39.237 +02:00 [Information] Request finished in 6290.7022ms 200 text/html; charset=utf-8
+2016-06-14 12:22:39.262 +02:00 [Information] Connection id ""0HKSK7N61TKHI"" communication error
+Microsoft.AspNetCore.Server.Kestrel.Networking.UvException: Error -4077 ECONNRESET connection reset by peer
+2016-06-14 12:22:41.664 +02:00 [Information] Request starting HTTP/1.1 GET http://localhost:6129/FilmFanatic  
+2016-06-14 12:22:41.845 +02:00 [Information] Executing action method "DemoWebApp.Areas.FilmFanatic.Controllers.HomeController.Index (DemoWebApp)" with arguments (null) - ModelState is Valid'
+2016-06-14 12:22:42.213 +02:00 [Information] Executing ViewResult, running view at path "/Areas/FilmFanatic/Views/Home/Index.cshtml".
+2016-06-14 12:22:42.436 +02:00 [Information] Executed action "DemoWebApp.Areas.FilmFanatic.Controllers.HomeController.Index (DemoWebApp)" in 767.0121ms
+2016-06-14 12:22:42.459 +02:00 [Information] Request finished in 789.0323ms 200 text/html; charset=utf-8
+2016-06-14 12:22:42.773 +02:00 [Information] Request starting HTTP/1.1 GET http://localhost:6129/api/movies/find/?query=&_=1465899762642 application/json; charset=utf-8 
+2016-06-14 12:22:42.983 +02:00 [Information] Executing action method "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.FindMovies (DemoWebApp)" with arguments ([""]) - ModelState is Valid'
+2016-06-14 12:22:43.943 +02:00 [Information] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext".
+2016-06-14 12:22:45.023 +02:00 [Information] Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Title], [t].[Description], [t].[ImdbLink], [t].[PosterLink]
+FROM [TblMovies] AS [t]
+2016-06-14 12:22:45.157 +02:00 [Information] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [j].[MovieID], [j].[Genre]
+FROM [TblMoviesWithGenres] AS [j]
+2016-06-14 12:22:45.186 +02:00 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [j].[MovieID], [j].[Genre]
+FROM [TblMoviesWithGenres] AS [j]
+2016-06-14 12:22:45.201 +02:00 [Information] Executed action "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.FindMovies (DemoWebApp)" in 2413.186ms
+2016-06-14 12:22:45.207 +02:00 [Information] Request finished in 2433.9343ms 200 application/json; charset=utf-8
+2016-06-14 12:22:55.591 +02:00 [Information] Request starting HTTP/1.1 POST http://localhost:6129/api/movies/create application/json 136
+2016-06-14 12:22:55.734 +02:00 [Information] Executing action method "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.MovieCreate (DemoWebApp)" with arguments (["DemoWebApp.Areas.FilmFanatic.ViewModels.CreateViewModel"]) - ModelState is Valid'
+2016-06-14 12:22:56.282 +02:00 [Information] Executed DbCommand (16ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [TblMovies] ([Description], [ImdbLink], [PosterLink], [Title])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [ID]
+FROM [TblMovies]
+WHERE @@ROWCOUNT = 1 AND [ID] = scope_identity();
+2016-06-14 12:22:56.376 +02:00 [Information] Executed DbCommand (11ms) [Parameters=[@p4='?', @p5='?', @p6='?', @p7='?', @p8='?', @p9='?'], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @toInsert3 TABLE ([Genre] int, [MovieID] bigint, [_Position] [int]);
+INSERT INTO @toInsert3
+VALUES (@p4, @p5, 0),
+(@p6, @p7, 1),
+(@p8, @p9, 2);
+
+DECLARE @inserted3 TABLE ([ID] bigint, [Genre] int, [MovieID] bigint, [_Position] [int]);
+MERGE [TblMoviesWithGenres] USING @toInsert3 AS i ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Genre], [MovieID])
+VALUES (i.[Genre], i.[MovieID])
+OUTPUT INSERTED.[ID], INSERTED.[Genre], INSERTED.[MovieID], i._Position
+INTO @inserted3;
+
+SELECT [ID] FROM @inserted3
+ORDER BY _Position;
+2016-06-14 12:22:56.402 +02:00 [Information] Executing HttpStatusCodeResult, setting HTTP status code 200
+2016-06-14 12:22:56.405 +02:00 [Information] Executed action "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.MovieCreate (DemoWebApp)" in 807.3534ms
+2016-06-14 12:22:56.409 +02:00 [Information] Request finished in 817.8618ms 200 
+2016-06-14 12:22:58.155 +02:00 [Information] Request starting HTTP/1.1 GET http://localhost:6129/api/movies/find/?query=&_=1465899762643 application/json; charset=utf-8 
+2016-06-14 12:22:58.162 +02:00 [Information] Executing action method "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.FindMovies (DemoWebApp)" with arguments ([""]) - ModelState is Valid'
+2016-06-14 12:22:58.216 +02:00 [Information] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext".
+2016-06-14 12:22:58.256 +02:00 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[ID], [t].[Title], [t].[Description], [t].[ImdbLink], [t].[PosterLink]
+FROM [TblMovies] AS [t]
+2016-06-14 12:22:58.263 +02:00 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [j].[MovieID], [j].[Genre]
+FROM [TblMoviesWithGenres] AS [j]
+2016-06-14 12:22:58.270 +02:00 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [j].[MovieID], [j].[Genre]
+FROM [TblMoviesWithGenres] AS [j]
+2016-06-14 12:22:58.274 +02:00 [Information] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [j].[MovieID], [j].[Genre]
+FROM [TblMoviesWithGenres] AS [j]
+2016-06-14 12:22:58.279 +02:00 [Information] Executed action "DemoWebApp.Areas.FilmFanatic.Controllers.MoviesController.FindMovies (DemoWebApp)" in 116.4585ms
+2016-06-14 12:22:58.283 +02:00 [Information] Request finished in 129.0074ms 200 application/json; charset=utf-8
+2016-06-14 12:22:58.296 +02:00 [Information] Request starting HTTP/1.1 GET http://localhost:6129/blkjbjk  
+2016-06-14 12:22:58.310 +02:00 [Information] Request finished in 15.2457ms 404 

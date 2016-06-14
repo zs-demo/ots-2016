@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using DemoWebApp.Data;
 using DemoWebApp.Models;
 using DemoWebApp.Services;
+using Serilog;
+using Serilog.Sinks.RollingFile;
 
 namespace DemoWebApp
 {
@@ -19,6 +21,11 @@ namespace DemoWebApp
     {
         public Startup(IHostingEnvironment env)
         {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.RollingFile("log-{Date}.txt")
+                .CreateLogger();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -59,6 +66,7 @@ namespace DemoWebApp
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            loggerFactory.AddSerilog();
 
             if (env.IsDevelopment())
             {
